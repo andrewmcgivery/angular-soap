@@ -39,6 +39,8 @@ $soap.get(url,action,params).then(function(response){
 });
 ```
 
+NOTE: Response will be a javascript object containing the response mapped to objects. Do a console.log of response so you can see what you are working with.
+
 # Example 1: Hello World
 A basic "Hello World" with no parameters.
 
@@ -59,6 +61,88 @@ angular.module('myApp', ['angularSoap'])
 
   testService.HelloWorld().then(function(response){
 	$scope.response = response;
+  });
+  
+})
+
+```
+
+# Example 2: Injoke with Parameters
+A basic method call with parameters.
+
+``` javascript
+angular.module('myApp', ['angularSoap'])
+
+.factory("testService", ['$soap',function($soap){
+	var base_url = "http://www.cooldomain.com/SoapTest/webservicedemo.asmx";
+
+	return {
+		CreateUser: function(firstName, lastName){
+			return $soap.get(base_url,"CreateUser", {firstName: firstName, lastName: lastName});
+		}
+	}
+}])
+
+.controller('MainCtrl', function($scope, testService) {
+
+  testService.CreateUser($scope.firstName, $scope.lastName).then(function(response){
+	$scope.response = response;
+  });
+  
+})
+
+```
+
+# Example 3: Get Single Object
+A basic method call to get a single object.
+
+``` javascript
+angular.module('myApp', ['angularSoap'])
+
+.factory("testService", ['$soap',function($soap){
+	var base_url = "http://www.cooldomain.com/SoapTest/webservicedemo.asmx";
+
+	return {
+		GetUser: function(id){
+			return $soap.get(base_url,"GetUser", {id: id});
+		}
+	}
+}])
+
+.controller('MainCtrl', function($scope, testService) {
+
+  testService.GetUser($scope.id).then(function(user){
+	console.log(user.firstName);
+	console.log(user.lastName);
+  });
+  
+})
+
+```
+
+# Example 4: Get Many Object
+A basic method call to get a collection of objects.
+
+``` javascript
+angular.module('myApp', ['angularSoap'])
+
+.factory("testService", ['$soap',function($soap){
+	var base_url = "http://www.cooldomain.com/SoapTest/webservicedemo.asmx";
+
+	return {
+		GetUsers: function(){
+			return $soap.get(base_url,"GetUsers");
+		}
+	}
+}])
+
+.controller('MainCtrl', function($scope, testService) {
+
+  testService.GetUsers().then(function(users){
+	for(i=0;i<users.length;i++){
+		console.log(users[i].firstName);
+		console.log(users[i].lastName);
+	}
   });
   
 })
