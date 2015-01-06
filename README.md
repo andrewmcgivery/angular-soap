@@ -3,7 +3,7 @@ angular-soap
 
 An Angular port of a <a href="http://javascriptsoapclient.codeplex.com/">JavaScript SOAP Client</a> into a factory that has a similar syntax to $http.
 
-*Usage
+# Usage
 Before using the factory, you must import its module:
 
 ``` javascript
@@ -39,7 +39,7 @@ $soap.get(url,action,params).then(function(response){
 });
 ```
 
-*Example 1: Hello World
+# Example 1: Hello World
 A basic "Hello World" with no parameters.
 
 ``` javascript
