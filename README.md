@@ -4,7 +4,12 @@ angular-soap
 An Angular port of a <a href="http://javascriptsoapclient.codeplex.com/">JavaScript SOAP Client</a> into a factory that has a similar syntax to $http.
 
 # Usage
-Before using the factory, you must import its module:
+Before using the factory, you must import the two scripts and its module:
+
+``` html
+<script src="soapclient.js"></script>
+<script src="angular.soap.js"></script>
+```
 
 ``` javascript
 angular.module('myApp', ['angularSoap']);
@@ -120,7 +125,7 @@ angular.module('myApp', ['angularSoap'])
 
 ```
 
-# Example 4: Get Many Object
+# Example 4: Get Many Objects
 A basic method call to get a collection of objects.
 
 ``` javascript
