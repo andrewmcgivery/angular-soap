@@ -46,7 +46,7 @@ A basic "Hello World" with no parameters.
 angular.module('myApp', ['angularSoap'])
 
 .factory("testService", ['$soap',function($soap){
-	var base_url = "http://websrvs1test.conestogac.on.ca/SoapTest/webservicedemo.asmx";
+	var base_url = "http://www.cooldomain.com/SoapTest/webservicedemo.asmx";
 
 	return {
 		HelloWorld: function(){
@@ -64,22 +64,3 @@ angular.module('myApp', ['angularSoap'])
 })
 
 ```
-
-
-
-
-
-
-
-
-
-
-.factory("testService", ['$soap',function($soap){
-	var base_url = "http://websrvs1test.conestogac.on.ca/SoapTest/webservicedemo.asmx";
-
-	return {
-		HelloWorld: function(){
-			return $soap.get(base_url,"HelloWorld");
-		}
-	}
-}])
