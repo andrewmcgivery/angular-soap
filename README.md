@@ -72,7 +72,7 @@ angular.module('myApp', ['angularSoap'])
 
 ```
 
-# Example 2: Injoke with Parameters
+# Example 2: Invoke with Parameters
 A basic method call with parameters.
 
 ``` javascript
