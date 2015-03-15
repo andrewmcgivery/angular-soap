@@ -23,7 +23,7 @@ Then, wherever you are going to consume it, make a reference to the $soap servic
 }])
 ```
 
-$soap has one method, get, which accepts the following paramaters:
+$soap has one method, post, which accepts the following paramaters:
 
 | Parameter |Description | Example |
 | ------------ | ------------  | ------------  |
@@ -33,13 +33,13 @@ $soap has one method, get, which accepts the following paramaters:
 
 Syntax:
 ``` javascript
-$soap.get(url,action,params);
+$soap.post(url,action,params);
 ```
 
-Similar to $http methods, $soap.get returns a promise that you can act upon.
+Similar to $http methods, $soap.post returns a promise that you can act upon.
 
 ``` javascript
-$soap.get(url,action,params).then(function(response){
+$soap.post(url,action,params).then(function(response){
 	//Do Stuff
 });
 ```
@@ -57,7 +57,7 @@ angular.module('myApp', ['angularSoap'])
 
 	return {
 		HelloWorld: function(){
-			return $soap.get(base_url,"HelloWorld");
+			return $soap.post(base_url,"HelloWorld");
 		}
 	}
 }])
@@ -83,7 +83,7 @@ angular.module('myApp', ['angularSoap'])
 
 	return {
 		CreateUser: function(firstName, lastName){
-			return $soap.get(base_url,"CreateUser", {firstName: firstName, lastName: lastName});
+			return $soap.post(base_url,"CreateUser", {firstName: firstName, lastName: lastName});
 		}
 	}
 }])
@@ -109,7 +109,7 @@ angular.module('myApp', ['angularSoap'])
 
 	return {
 		GetUser: function(id){
-			return $soap.get(base_url,"GetUser", {id: id});
+			return $soap.post(base_url,"GetUser", {id: id});
 		}
 	}
 }])
@@ -136,7 +136,7 @@ angular.module('myApp', ['angularSoap'])
 
 	return {
 		GetUsers: function(){
-			return $soap.get(base_url,"GetUsers");
+			return $soap.post(base_url,"GetUsers");
 		}
 	}
 }])
