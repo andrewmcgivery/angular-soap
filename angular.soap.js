@@ -2,7 +2,7 @@ angular.module('angularSoap', [])
 
 .factory("$soap",['$q',function($q){
 	return {
-		get: function(url, action, params){
+		post: function(url, action, params){
 			var deferred = $q.defer();
 			
 			//Create SOAPClientParameters
