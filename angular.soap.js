@@ -23,6 +23,10 @@ angular.module('angularSoap', [])
 			SOAPClient.invoke(url, action, soapParams, true, soapCallback);
 
 			return deferred.promise;
+		},
+		setCredentials: function(username, password){
+			SOAPClient.username = username;
+			SOAPClient.password = password;
 		}
 	}
 }]);
