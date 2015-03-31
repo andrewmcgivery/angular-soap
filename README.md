@@ -153,3 +153,34 @@ angular.module('myApp', ['angularSoap'])
 })
 
 ```
+
+# Example 5: Set Connection Credentials
+Set the credentials for the connection before sending any requests.
+
+``` javascript
+angular.module('myApp', ['angularSoap'])
+
+.factory("testService", ['$soap',function($soap){
+	var base_url = "http://www.cooldomain.com/SoapTest/webservicedemo.asmx";
+	
+	$soap.setCredentials("username","password");
+
+	return {
+		GetUsers: function(){
+			return $soap.post(base_url,"GetUsers");
+		}
+	}
+}])
+
+.controller('MainCtrl', function($scope, testService) {
+
+  testService.GetUsers().then(function(users){
+	for(i=0;i<users.length;i++){
+		console.log(users[i].firstName);
+		console.log(users[i].lastName);
+	}
+  });
+  
+})
+
+```
