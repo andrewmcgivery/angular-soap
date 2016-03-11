@@ -169,10 +169,10 @@ SOAPClient._sendSoapRequest = function(url, method, parameters, async, callback,
 				"</" + method + "></soap:Body></soap:Envelope>";
 	// send request
 	var xmlHttp = SOAPClient._getXmlHttp();
-	if (SOAPClient.userName && SOAPClient.password){
-		xmlHttp.open("POST", url, async, SOAPClient.userName, SOAPClient.password);
+	if (SOAPClient.username && SOAPClient.password){
+		xmlHttp.open("POST", url, async, SOAPClient.username, SOAPClient.password);
 		// Some WS implementations (i.e. BEA WebLogic Server 10.0 JAX-WS) don't support Challenge/Response HTTP BASIC, so we send authorization headers in the first request
-		xmlHttp.setRequestHeader("Authorization", "Basic " + SOAPClient._toBase64(SOAPClient.userName + ":" + SOAPClient.password));
+		xmlHttp.setRequestHeader("Authorization", "Basic " + SOAPClient._toBase64(SOAPClient.username + ":" + SOAPClient.password));
 	}
 	else
 		xmlHttp.open("POST", url, async);
