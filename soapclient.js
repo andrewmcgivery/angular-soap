@@ -133,7 +133,13 @@ SOAPClient._loadWsdl = function(url, method, parameters, async, callback)
 		return SOAPClient._sendSoapRequest(url, method, parameters, async, callback, wsdl);
 	// get wsdl
 	var xmlHttp = SOAPClient._getXmlHttp();
-	xmlHttp.open("GET", url + "?wsdl", async);
+	if (SOAPClient.username && SOAPClient.password){
+		xmlHttp.open("GET", url + "?wsdl", async, SOAPClient.username, SOAPClient.password);
+		// Some WS implementations (i.e. BEA WebLogic Server 10.0 JAX-WS) don't support Challenge/Response HTTP BASIC, so we send authorization headers in the first request
+		xmlHttp.setRequestHeader("Authorization", "Basic " + SOAPClient._toBase64(SOAPClient.username + ":" + SOAPClient.password));
+	}
+	else
+		xmlHttp.open("GET", url + "?wsdl", async);
 	if(async) 
 	{
 		xmlHttp.onreadystatechange = function() 
